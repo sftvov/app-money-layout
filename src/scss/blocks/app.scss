@@ -1,0 +1,77 @@
+.header,
+.footer {
+	width: 100%;
+	min-height: 50px;
+	border: 1px solid $colorText;
+}
+
+.table {
+	display: grid;
+	grid-template-columns: repeat(4, auto);
+	&__ceil {
+		padding: 10px;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		text-align: center;
+		align-items: center;
+
+		&--name,
+		&--plan,
+		&--wasted,
+		&--wasted-plus,
+		&--total-wasted {
+			&::after {
+				content: '';
+				@include adaptiv-value('min-width', 12, 12, 9, $md1, $md4, px);
+				@include adaptiv-value('height', 12, 12, 9, $md1, $md4, px);
+				margin-left: 8px;
+			}
+		}
+
+		&--name,
+		&--plan,
+		&--wasted {
+			&::after {
+				background-image: url(/img/icons/pencil-fill.svg);
+			}
+		}
+
+		&--name {
+			text-align: left;
+			grid-column-start: 1;
+		}
+
+		&--wasted {
+			grid-column-start: 2;
+		}
+
+		&--wasted-plus {
+			grid-column-start: 2;
+			&::after {
+				background-image: url(/img/icons/plus.svg);
+			}
+		}
+
+		&--needed {
+		}
+
+		&--total-wasted {
+			grid-column-start: 2;
+		}
+		&--total-needed {
+			grid-column-start: 4;
+		}
+	}
+
+	&__icons {
+		grid-column: span 4;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		column-gap: 20px;
+		padding: 30px;
+	}
+	&__icon {
+		font-size: 0;
+	}
+}
